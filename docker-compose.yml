@@ -1,0 +1,18 @@
+services:
+  ddbb_microservices:
+    container_name: ddbb_microservices
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'spiral_ddbb'
+      MYSQL_USER: 'admin'
+      MYSQL_PASSWORD: 'admin'
+      MYSQL_ROOT_PASSWORD: 'admin'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - spiral_ddbb:/var/lib/mysql
+volumes:
+  spiral_ddbb:
