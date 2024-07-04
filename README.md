@@ -8,7 +8,7 @@
 
     3.3.- docker build -t api-gateway .
 
-    3.4.- docker run -d --name api-gateway -p 3001:3001 api-gateway
+    3.4.- docker run -d --name api-gateway -p 3000:3000 api-gateway
 
 
 4. Abrir otro cmd o bash en el directorio del repo
@@ -32,7 +32,7 @@
 
     7.3.- docker build -t microservice2 .
 
-    7.4.- docker run -d --name microservice2 --hostname microservice2 -p 3001:3001 microservice2
+    7.4.- docker run -d --name microservice2 --hostname microservice2 -p 3002:3002 microservice2
 
 8. Abrir otro cmd o bash en el directorio del repo
 
@@ -51,6 +51,12 @@
     10.4.- docker network connect spiralnet microservice1
     
     10.5.- docker network connect spiralnet microservice2
+
+11. Se recomienda el reinicio de todos los contenedores, pasado un minuto, para una sincronización optima de la base de datos con la ORM y evitar errores, ejecutando los siguientes comandos:
+
+    11.1.- docker stop ddbb_microservices microservice1 microservice2 api-gateway
+
+    11.2.- docker start ddbb_microservices microservice1 microservice2 api-gateway
 
 
 En POSTMAN crear los siguientes endpoints:
