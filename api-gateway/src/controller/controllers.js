@@ -4,7 +4,8 @@ import {
     getAllProductService,
     getOneProductService,
     deleteProductService,
-    updateProductService
+    updateProductService,
+    executeSeederService
 } from "../service/services.js"
 
 export const loginController = async (req,res) => {
@@ -29,4 +30,8 @@ export const deleteProductController = async (url, res) => {
 
 export const updateProductController = async (req_, res) => {
     return await updateProductService(req_, res);
+}
+
+export const executeSeederController = async(req, res) => {
+    return await executeSeederService(req, res);
 }

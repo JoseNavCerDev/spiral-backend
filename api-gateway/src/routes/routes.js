@@ -5,7 +5,8 @@ import {
     getAllProductController,
     getOneProductController,
     deleteProductController,
-    updateProductController
+    updateProductController,
+    executeSeederController
 } from "../controller/controllers.js";
 
 const router = Router();
@@ -58,6 +59,12 @@ router.patch('/:route/:id/:token', async (req, res) => {
         token
     }
     res.send(await updateProductController(req_, res));
+});
+
+//Endpoint for seeder execution
+router.get('/', async(req, res) => {
+    const url = `http://${process.env.M1_HOST}:${process.env.M1_PORT}/${process.env.M1_API_NAME}/executeSeeder`;
+    res.send(await executeSeederController(url, res));
 });
 
 export default router;

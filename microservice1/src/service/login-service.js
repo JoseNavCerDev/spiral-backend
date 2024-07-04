@@ -16,6 +16,22 @@ export const loginAuth = async (correo, password) => {
             
 }
 
+export const executeSeederService = async () => {
+    
+    try {
+        await User.create({
+            id: "20202020",
+            nombre: "Luis Lopez",
+            correo:"luis.lopez@ieee.com",
+            password: "cantilever"
+        });
+        return JSON.stringify('Seeder ejecutado satisfactoriamente');        
+    } catch (error) {
+        console.log(error);
+        return JSON.stringify('No se pudo ejecutar el seeder');
+    }
+}
+
 export const connectionTestingService = () => {
     connectionTesting();
 }

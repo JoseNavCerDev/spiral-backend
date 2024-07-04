@@ -2,6 +2,7 @@ import Router from 'express';
 import { autenticationMethod } from '../controller/login-controller.js';
 import { validateEmail } from '../middleware/validate-email.js';
 import { validateJWT } from '../middleware/jwt-login.js';
+import { executeSeederController } from '../controller/login-controller.js'
 
 const router = Router();
 
@@ -19,6 +20,8 @@ router.get('/validateToken/:token', async (req, res) => {
     res.send(validationToken_)
 });
 
-router.post('signin', /* createNewUserWithEmailValidation */);
+router.get('/executeSeeder', async(req, res) => {
+    res.send(await executeSeederController(res));
+});
 
 export default router;

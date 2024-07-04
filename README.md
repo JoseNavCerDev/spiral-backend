@@ -40,8 +40,25 @@
 
     9.1.- docker compose up
 
+10. Una vez desplegados todos los contenedores (4 exactamente) se requiere de conectarlos en la NET interna de Docker, todo esto ejecutando los siguientes comandos (abrir otro cmd o bash):
+    
+    10.1.- docker network create spiralnet
+
+    10.2.- docker network connect spiralnet ddbb_microservices
+
+    10.3.- docker network connect spiralnet api-gateway
+
+    10.4.- docker network connect spiralnet microservice1
+    
+    10.5.- docker network connect spiralnet microservice2
+
 
 En POSTMAN crear los siguientes endpoints:
+
+    -- Ejecutar el seeder del usuario --
+    GET - http://localhost:3000
+        
+        Como respuesta se obtienen una label de confirmacion o negacion
 
     -- Login --
     POST - http://localhost:3000/login

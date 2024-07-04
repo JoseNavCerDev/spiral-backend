@@ -109,3 +109,19 @@ export const updateProductService = async (req_, res) => {
     }
 
 }
+
+export const executeSeederService = async (req, res) => {
+    try {
+        const response = await fetch(req, {
+            method: 'get',
+            headers: {'Content-Type': 'application/json'}
+        });
+        if(!response.ok){
+            throw new Error('Wrong conection to microservice_1');
+        }
+        const res_ = await response.json(); 
+        return res_;   
+    } catch (error) {
+        console.error(error);
+    }
+}
